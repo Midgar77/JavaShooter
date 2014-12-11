@@ -79,12 +79,12 @@ public class TwoPlayerShooterGamee extends JPanel{
 	}
 	
 	public void playerWon(){
-		JOptionPane.showMessageDialog(null, "Bottom player won!.", "Game Over!", JOptionPane.YES_NO_OPTION);
+		JOptionPane.showMessageDialog(null, player.getName()+" has won!", "Game Over!", JOptionPane.YES_NO_OPTION);
 		System.exit(0);
 	}
 	
 	public void bossWon(){
-		JOptionPane.showMessageDialog(null, "Top player won!.", "Game Over!", JOptionPane.YES_NO_OPTION);
+		JOptionPane.showMessageDialog(null, boss.getName()+" has won!", "Game Over!", JOptionPane.YES_NO_OPTION);
 		System.exit(0);
 	}
 
@@ -96,6 +96,15 @@ public class TwoPlayerShooterGamee extends JPanel{
 	public void addOneToScore(){
 		playerScore += 1;
 	}
+        
+        public void getPlayerNames()
+        {
+            String player1Name = JOptionPane.showInputDialog("Enter The Name of First Player!");
+            player.setName(player1Name);
+            
+            String player2Name = JOptionPane.showInputDialog("Enter The Name of Second Player!");
+            boss.setName(player2Name);
+        }
 
 	@Override
 	public void paint(Graphics g) {
@@ -123,10 +132,12 @@ public class TwoPlayerShooterGamee extends JPanel{
 
 		g2d.setColor(Color.GRAY);
 		g2d.setFont(new Font("Verdana", Font.BOLD, 30));
-		g2d.drawString(String.valueOf(bossScore), 10, 30);
+                g2d.drawString(String.valueOf(boss.getName()), 10, 30);
+		g2d.drawString(String.valueOf(bossScore), 25, 55);
 		
 		g2d.setFont(new Font("Verdana", Font.BOLD, 30));
-		g2d.drawString(String.valueOf(playerScore), 10, WINDOW_HEIGHT - 60);
+                g2d.drawString(String.valueOf(player.getName()), 10, WINDOW_HEIGHT - 50);
+		g2d.drawString(String.valueOf(playerScore), 25, WINDOW_HEIGHT - 25);
 	}
 
 
@@ -138,12 +149,15 @@ public class TwoPlayerShooterGamee extends JPanel{
 		frame.add(game);
 		frame.setSize(game.WINDOW_WIDTH, game.WINDOW_HEIGHT);
 		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		game.getPlayerNames();
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		while (true) {
+                        
 			game.move();
 			game.repaint();
+                        
 			Thread.sleep(10);
 		}
+                
 	}
 }

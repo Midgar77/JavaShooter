@@ -28,7 +28,8 @@ public class Player extends Character{
 	BufferedImage player;
 	boolean activeKey = true;
 	boolean speedBoost = false;
-
+        
+        String name="Player";
 
 
 	public Player(TwoPlayerShooterGamee game) {
@@ -43,7 +44,17 @@ public class Player extends Character{
 
 
 	}
-
+        
+        void setName(String s)
+        {
+            name = s;
+        }
+        
+        String getName()
+        {
+            return name;
+        }
+        
 	void move() {
 		
 		if(game.playerScore % 2 == 0 && game.playerScore != 0 && !speedBoost){
@@ -166,5 +177,6 @@ public class Player extends Character{
 		speed = 1;
 	}
 
+   
 
 }
