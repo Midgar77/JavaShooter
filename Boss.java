@@ -27,6 +27,8 @@ public class Boss extends Character{
 	int count = 0;
 	boolean activeKey = true;
 	boolean speedBoost = true;
+        
+        String name="Boss";
 
 
 
@@ -42,7 +44,18 @@ public class Boss extends Character{
 
 
 	}
-
+        
+        void setName(String s)
+        {
+            name=s;
+            
+        }
+        
+        String getName()
+        {
+            return name;
+        }
+        
 	void move() {
 
 		if(game.bossScore % 2 == 0 && game.bossScore != 0 && !speedBoost){
@@ -147,5 +160,7 @@ public class Boss extends Character{
 		ya = 0;
 		speed = 1;
 	}
+
+    
 
 }
