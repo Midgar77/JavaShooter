@@ -37,8 +37,13 @@ public class TwoPlayerShooterGamee extends JPanel{
 
 			@Override
 			public void keyReleased(KeyEvent e) {
-				player.keyReleased(e);
-				boss.keyReleased(e);
+				int code = e.getKeyCode();
+				if(code == KeyEvent.VK_LEFT || code == KeyEvent.VK_RIGHT  || code == KeyEvent.VK_UP  || 
+						code == KeyEvent.VK_DOWN)
+					player.keyReleased(e);
+				else if(code == KeyEvent.VK_W || code == KeyEvent.VK_A || code == KeyEvent.VK_S ||
+						code == KeyEvent.VK_D)
+					boss.keyReleased(e);
 			}
 
 			@Override
