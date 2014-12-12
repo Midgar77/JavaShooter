@@ -136,8 +136,8 @@ public class TwoPlayerShooterGamee extends JPanel{
 		g2d.drawString(String.valueOf(bossScore), 25, 55);
 		
 		g2d.setFont(new Font("Verdana", Font.BOLD, 30));
-                g2d.drawString(String.valueOf(player.getName()), 10, WINDOW_HEIGHT - 50);
-		g2d.drawString(String.valueOf(playerScore), 25, WINDOW_HEIGHT - 25);
+                g2d.drawString(String.valueOf(player.getName()), 10, WINDOW_HEIGHT - 75);
+		g2d.drawString(String.valueOf(playerScore), 25, WINDOW_HEIGHT - 50);
 	}
 
 
