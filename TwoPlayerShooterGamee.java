@@ -18,6 +18,7 @@ public class TwoPlayerShooterGamee extends JPanel{
 	int WINDOW_HEIGHT = 720;
 	int playerScore = 0;
 	int bossScore = 0;
+	int winCount = 0;
 
 	Boss boss = new Boss(this);
 	Player player = new Player(this);
@@ -66,9 +67,9 @@ public class TwoPlayerShooterGamee extends JPanel{
 	
 	private void move() {
 		
-		if(playerScore >= 20)
+		if(playerScore >= winCount)
 			playerWon();
-		else if(bossScore >= 20)
+		else if(bossScore >= winCount)
 			bossWon();
 		
 		player.move();
@@ -110,6 +111,17 @@ public class TwoPlayerShooterGamee extends JPanel{
             String player2Name = JOptionPane.showInputDialog("Enter The Name of Second Player!");
             boss.setName(player2Name);
         }
+        
+        public int getWinScore(){
+		int score = 0;
+		try{
+			score = Integer.parseInt(JOptionPane.showInputDialog(null, "What would you like the winning score to be?", "Winning Score"));
+			return score;
+		}catch(Exception e){
+			return getWinScore();
+		}
+		
+	}
 
 	@Override
 	public void paint(Graphics g) {
@@ -155,6 +167,7 @@ public class TwoPlayerShooterGamee extends JPanel{
 		frame.setSize(game.WINDOW_WIDTH, game.WINDOW_HEIGHT);
 		frame.setVisible(true);
 		game.getPlayerNames();
+		game.winCount = game.getWinScore();
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		while (true) {
                         
